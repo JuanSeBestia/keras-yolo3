@@ -53,7 +53,8 @@ def bbox_iou(box1, box2):
     w2, h2 = box2.xmax-box2.xmin, box2.ymax-box2.ymin
     
     union = w1*h1 + w2*h2 - intersect
-    
+    if union == 0:
+        return 0
     return float(intersect) / union
 
 def draw_boxes(image, boxes, labels, obj_thresh, quiet=True):
@@ -69,20 +70,20 @@ def draw_boxes(image, boxes, labels, obj_thresh, quiet=True):
             if not quiet: print(label_str)
                 
         if label >= 0:
-            text_size = cv2.getTextSize(label_str, cv2.FONT_HERSHEY_SIMPLEX, 1.1e-3 * image.shape[0], 5)
+            text_size = cv2.getTextSize(label_str, cv2.FONT_HERSHEY_SIMPLEX, 5e-4 * image.shape[0], 5)
             width, height = text_size[0][0], text_size[0][1]
-            region = np.array([[box.xmin-3,        box.ymin], 
-                               [box.xmin-3,        box.ymin-height-26], 
-                               [box.xmin+width+13, box.ymin-height-26], 
-                               [box.xmin+width+13, box.ymin]], dtype='int32')  
+            region = np.array([[box.xmin-2,        box.ymin], 
+                               [box.xmin-2,        box.ymin-height-13], 
+                               [box.xmin+width+7, box.ymin-height-13], 
+                               [box.xmin+width+7, box.ymin]], dtype='int32')  
 
-            cv2.rectangle(img=image, pt1=(box.xmin,box.ymin), pt2=(box.xmax,box.ymax), color=get_color(label), thickness=5)
+            cv2.rectangle(img=image, pt1=(box.xmin,box.ymin), pt2=(box.xmax,box.ymax), color=get_color(label), thickness=1)
             cv2.fillPoly(img=image, pts=[region], color=get_color(label))
             cv2.putText(img=image, 
                         text=label_str, 
-                        org=(box.xmin+13, box.ymin - 13), 
+                        org=(box.xmin+7, box.ymin - 7), 
                         fontFace=cv2.FONT_HERSHEY_SIMPLEX, 
-                        fontScale=1e-3 * image.shape[0], 
+                        fontScale=5e-4 * image.shape[0], 
                         color=(0,0,0), 
                         thickness=2)
         

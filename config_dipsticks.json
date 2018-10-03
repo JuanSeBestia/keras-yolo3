@@ -28,7 +28,7 @@
         "tensorboard_dir":      "logs",
         "saved_weights_name":   "yolo3_dipstick.h5",
         "pretrained_weights":   "yolo3_dipstick.h5",
-        "debug":                true
+        "debug":                false
     },
 
     "valid": {
