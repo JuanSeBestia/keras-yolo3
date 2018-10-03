@@ -2,7 +2,7 @@ imgaug
 opencv-python
 tqdm
 raven==6.9.0
-tensorflow==1.8
+tensorflow-gpu==1.8
 h5py==2.8.0
 Keras==2.1.6
 matplotlib==2.2.3
