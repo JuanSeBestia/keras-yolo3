@@ -104,6 +104,23 @@ By the end of this process, the code will write the weights of the best model to
 ### 5. Perform detection using trained weights on image, set of images, video, or webcam
 `python predict.py -c config.json -i /path/to/image/or/video`
 
+or run 
+``` bash
+
+# Comand to run all predecits
+START=$(date +%s)
+ArrayName=(/home/inkremental-3/gitKraken/keras-yolo3/examples/dipstick/images/*)
+for var in "${ArrayName[@]}"
+do
+echo "RUN PREDICT WITH $var"
+python predict.py -c config_dipsticks.json -i $var -o /home/inkremental-3/gitKraken/keras-yolo3/examples/dipstick/images_tested_yolov3/
+done
+END=$(date +%s)
+DIFF=$(( $END - $START ))
+echo "It took $DIFF seconds"
+
+```
+
 It carries out detection on the image and write the image with detected bounding boxes to the same folder.
 
 ## Evaluation

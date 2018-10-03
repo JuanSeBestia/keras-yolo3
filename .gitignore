@@ -2,3 +2,9 @@
 *.jpeg
 *.weights
 *.h5
+venv*
+.*
+_*
+*.pyc
+logs/
+cache
