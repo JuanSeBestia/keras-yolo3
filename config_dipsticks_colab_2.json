@@ -1,0 +1,41 @@
+{
+    "model" : {
+        "min_input_size":       288,
+        "max_input_size":       416,
+        "anchors":              [19,30, 27,36, 28,46, 35,57, 36,44, 41,52, 43,66, 44,31, 59,43],
+        "labels":               ["dipstick"]
+    },
+
+    "train": {
+        "train_image_folder":   "keras-yolo3/examples/dipstick/images/",
+        "train_annot_folder":   "keras-yolo3/examples/dipstick/annotations/",
+        "cache_name":           "dipstick_train.pkl",
+
+        "train_times":          8,
+        "batch_size":           4,
+        "learning_rate":        1e-4,
+        "nb_epochs":            100,
+        "warmup_epochs":        3,
+        "ignore_thresh":        0.5,
+        "gpus":                 "0,1",
+
+        "grid_scales":          [1,1,1],
+        "obj_scale":            5,
+        "noobj_scale":          1,
+        "xywh_scale":           1,
+        "class_scale":          1,
+
+        "tensorboard_dir":      "logs",
+        "saved_weights_name":   "yolo3_dipstick_colab_2.h5",
+        "pretrained_weights":   "yolo3_dipstick_colab.h5",
+        "debug":                false
+    },
+
+    "valid": {
+        "valid_image_folder":   "keras-yolo3/examples/dipstick/images/",
+        "valid_annot_folder":   "keras-yolo3/examples/dipstick/annotations/",
+        "cache_name":           "cache",
+
+        "valid_times":          1
+    }
+}
