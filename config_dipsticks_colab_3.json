@@ -20,9 +20,9 @@
         "gpus":                 "0,1",
 
         "grid_scales":          [1,1,1],
-        "obj_scale":            5,
-        "noobj_scale":          1,
-        "xywh_scale":           1,
+        "obj_scale":            3,
+        "noobj_scale":          2,
+        "xywh_scale":           2,
         "class_scale":          1,
 
         "tensorboard_dir":      "logs",
