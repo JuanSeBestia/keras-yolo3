@@ -1,7 +1,7 @@
 {
     "model" : {
-        "min_input_size":       288,
-        "max_input_size":       416,
+        "min_input_size":       1024,
+        "max_input_size":       8192,
         "anchors":              [19,30, 27,36, 28,46, 35,57, 36,44, 41,52, 43,66, 44,31, 59,43],
         "labels":               ["dipstick"]
     },

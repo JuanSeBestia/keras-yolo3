@@ -1,0 +1,135 @@
+(venv) inkremental-3@inkremental3:~/gitKraken/keras-yolo3$ python train.py -c config_dipsticks.json
+Using TensorFlow backend.
+valid_annot_folder not exists. Spliting the trainining set.
+Seen labels:    {'dipstick': 500}
+
+Given labels:   ['dipstick']
+
+Training on:    ['dipstick']
+
+2018-10-03 10:29:58.504053: I tensorflow/core/platform/cpu_feature_guard.cc:141] Your CPU supports instructions that this TensorFlow binary was not compiled to use:AVX2 FMA
+Epoch 1/103
+resizing:  768 768
+avg_obj                 [24][0.401489407]avg_obj                [24][0.563867271]
+avg_noobj               [24][0.510749698]
+avg_iou                 [24][0.300143033]
+avg_cat                 [24][0.999968767]
+recall50        [24][0.0624980479]
+recall75        [24][0]
+count   [24][32]
+loss xy, wh, conf, class:       [24][1768.34534][42296.4453][1358.94727][0]
+...
+
+Epoch 00001: loss improved from inf to 1717.60332, saving model to yolo3_dipstick.h5
+Epoch 2/103
+avg_obj                 [14][0.518473506]
+avg_noobj               [14][0.496884]
+avg_iou                 [14][0.287924916]
+avg_cat                 [14][0.999981821]
+recall50        [14][0.0363629758]
+recall75        [14][0]
+count   [14][55]
+loss xy, wh, conf, class:       [14][590.788818][5077.34][675.197388][0]
+...
+Epoch 00002: loss improved from 1717.60332 to 907.48071, saving model to yolo3_dipstick.h5
+Epoch 3/103
+...
+avg_obj                 [80][0.578449309]
+avg_noobj               [80][0.441600204]
+avg_iou                 [80][0.190993205]
+avg_cat                 [80][0.99966681]
+recall50        [80][0]
+recall75        [80][0]
+count   [80][3]
+loss xy, wh, conf, class:       [80][8504.36133][33349.0781][8755.6416][0]
+ - 718s - loss: 655.5953 - yolo_layer_1_loss: 92.3599 - yolo_layer_2_loss: 166.8300 - yolo_layer_3_loss: 396.4055
+
+Epoch 00003: loss improved from 907.48071 to 655.59532, saving model to yolo3_dipstick.h5
+Epoch 4/103
+...
+avg_cat                 [48][0.999978721]
+recall50        [48][0.0425522849]
+recall75        [48][0]
+count   [48][47]
+loss xy, wh, conf, class:       [48][39.9377708][99.169014][2153.14746][0]
+avg_obj                 [48][0.370394826]
+avg_noobj               [48][0.330062747]
+avg_iou                 [48][0.492637843]
+avg_cat                 [48][0.999980032]
+recall50        [48][0.0199996009]
+recall75        [48][0]
+count   [48][50]
+loss xy, wh, conf, class:       [48][32.0860329][118.632797][2327.32666][0]
+ - 487s - loss: 184.2386 - yolo_layer_1_loss: 35.6892 - yolo_layer_2_loss: 47.9145 - yolo_layer_3_loss: 100.6349
+
+Epoch 00004: loss improved from 655.59532 to 184.23859, saving model to yolo3_dipstick.h5
+Epoch 5/103
+...
+Epoch 00005: loss improved from 184.23859 to 121.10677, saving model to yolo3_dipstick.h5
+Epoch 6/103
+...
+count   [60][82]
+loss xy, wh, conf, class:       [60][91.9183578][51.8149757][1132.24402][0]
+ - 525s - loss: 116.6571 - yolo_layer_1_loss: 31.5970 - yolo_layer_2_loss: 27.2336 - yolo_layer_3_loss: 57.8265
+
+Epoch 00006: loss improved from 121.10677 to 116.65709, saving model to yolo3_dipstick.h5
+...
+loss xy, wh, conf, class:       [68][5.57312489][6.87387896][194.118591][0]
+ - 714s - loss: 83.4778 - yolo_layer_1_loss: 31.1190 - yolo_layer_2_loss: 26.4814 - yolo_layer_3_loss: 25.8773
+
+Epoch 00011: loss did not improve from 80.64799
+Epoch 12/103
+...
+Epoch 00012: loss improved from 80.64799 to 74.63649, saving model to yolo3_dipstick.h5
+Epoch 13/103
+...
+loss xy, wh, conf, class:       [36][67.7393341][126.687332][305.06][0]
+ - 220s - loss: 63.4784 - yolo_layer_1_loss: 16.5437 - yolo_layer_2_loss: 12.4264 - yolo_layer_3_loss: 34.5083
+
+Epoch 00015: loss improved from 72.02114 to 63.47843, saving model to yolo3_dipstick.h5
+Epoch 16/103
+...
+avg_obj                 [40][0.334485829]
+avg_noobj               [40][0.0626973212]
+avg_iou                 [40][0.48560071]
+avg_cat                 [40][0.999989808]
+recall50        [40][0.153059661]
+recall75        [40][0.0102039771]
+count   [40][98]
+loss xy, wh, conf, class:       [40][67.9989624][146.207855][1426.93677][0]
+ - 439s - loss: 67.8322 - yolo_layer_1_loss: 23.6214 - yolo_layer_2_loss: 16.0422 - yolo_layer_3_loss: 28.1686
+
+Epoch 00016: loss did not improve from 63.47843
+Epoch 17/10
+...
+
+loss xy, wh, conf, class:       [68][2.83892536][2.68408608][78.0509872][0]
+ - 434s - loss: 64.7728 - yolo_layer_1_loss: 21.8064 - yolo_layer_2_loss: 17.9963 - yolo_layer_3_loss: 24.9700
+...
+
+Epoch 00019: loss did not improve from 63.47843
+Epoch 20/103
+...
+Epoch 00020: loss did not improve from 63.47843
+
+Epoch 00020: ReduceLROnPlateau reducing learning rate to 9.999999747378752e-07.
+Epoch 00020: early stopping
+/home/inkremental-3/gitKraken/keras-yolo3/venv/lib/python3.5/site-packages/keras/models.py:255: UserWarning: No training configuration found in save file: the modelwas *not* compiled. Compile it manually.
+  warnings.warn('No training configuration found in save file: '
+Traceback (most recent call last):
+  File "train.py", line 280, in <module>
+    _main_(args)
+  File "train.py", line 268, in _main_
+    average_precisions = evaluate(infer_model, valid_generator)
+  File "/home/inkremental-3/gitKraken/keras-yolo3/utils/utils.py", line 48, in evaluate
+    pred_boxes = get_yolo_boxes(model, raw_image, net_h, net_w, generator.get_anchors(), obj_thresh, nms_thresh)[0]
+  File "/home/inkremental-3/gitKraken/keras-yolo3/utils/utils.py", line 259, in get_yolo_boxes
+    do_nms(boxes, nms_thresh)
+  File "/home/inkremental-3/gitKraken/keras-yolo3/utils/utils.py", line 166, in do_nms
+    if bbox_iou(boxes[index_i], boxes[index_j]) >= nms_thresh:
+  File "/home/inkremental-3/gitKraken/keras-yolo3/utils/bbox.py", line 57, in bbox_iou
+    return float(intersect) / union
+ZeroDivisionError: float division by zero
+
+dipstick: 0.1330
+mAP: 0.1330
