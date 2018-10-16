@@ -39,6 +39,7 @@ def _main_(args):
             edit_image = cv2.resize(edit_image, (0, 0), fx=(
                 maxsize/maxpixels), fy=(maxsize/maxpixels))
         cv2.imwrite(args.output+inp_file,edit_image)
+        print(args.output+inp_file,"saved")
 
 
 if __name__ == '__main__':
