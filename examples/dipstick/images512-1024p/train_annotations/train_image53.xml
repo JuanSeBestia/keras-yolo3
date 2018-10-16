@@ -1,7 +1,7 @@
 <annotation verified="yes">
 	<folder>train_images</folder>
 	<filename>train_image53.jpg</filename>
-	<path>datasets/JPEGImages//train_image53.jpg</path>
+	<path>datasets/JPEGImages/train_image53.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
