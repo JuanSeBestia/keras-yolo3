@@ -1,7 +1,7 @@
 <annotation>
 	<folder>train_images</folder>
 	<filename>train_image45.jpg</filename>
-	<path>datasets/JPEGImages/train_image45.jpg</path>
+	<path>/home/inkremental-3/gitKraken/keras-yolo3/examples/dipstick/images512-1024p/train_images/train_image45.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>

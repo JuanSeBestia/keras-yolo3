@@ -119,6 +119,15 @@ END=$(date +%s)
 DIFF=$(( $END - $START ))
 echo "It took $DIFF seconds"
 
+# Copy image valid
+ArrayName=(*)
+for var in "${ArrayName[@]}"
+do
+#cp "../valid_images/${var/xml/jpg}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/JPEGImages/
+cp "${var}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/Annotations/
+done
+
+
 ```
 
 It carries out detection on the image and write the image with detected bounding boxes to the same folder.
