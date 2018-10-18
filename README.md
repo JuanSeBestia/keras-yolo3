@@ -127,6 +127,15 @@ do
 cp "${var}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/Annotations/
 done
 
+# Copy image valid
+ArrayName=$(cat dataset/ImageSets/Main/train.txt)
+for var in "${ArrayName[@]}"
+do
+echo $var
+#cp "../valid_images/${var/xml/jpg}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/JPEGImages/
+#cp "${var}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/Annotations/
+done
+
 
 ```
 
