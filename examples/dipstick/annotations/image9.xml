@@ -3,7 +3,7 @@
 	<filename>image9.jpg</filename>
 	<path>~/gitKraken/keras-yolo3/examples/dipstick/images/image9.jpg</path>
 	<source>
-		<database>Unknown</database>
+		<database>VOC_dipstick</database>
 	</source>
 	<size>
 		<width>1032</width>

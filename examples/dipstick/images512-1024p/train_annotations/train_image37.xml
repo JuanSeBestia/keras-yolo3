@@ -3,7 +3,7 @@
 	<filename>train_image37.jpg</filename>
 	<path>/home/inkremental-3/gitKraken/keras-yolo3/examples/dipstick/images512-1024p/train_images/train_image37.jpg</path>
 	<source>
-		<database>Unknown</database>
+		<database>VOC_dipstick</database>
 	</source>
 	<size>
 		<width>586</width>

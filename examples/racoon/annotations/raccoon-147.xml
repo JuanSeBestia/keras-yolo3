@@ -3,7 +3,7 @@
 	<filename>raccoon-147.jpg</filename>
 	<path>/Users/datitran/Desktop/raccoon/images/raccoon-147.jpg</path>
 	<source>
-		<database>Unknown</database>
+		<database>VOC_dipstick</database>
 	</source>
 	<size>
 		<width>426</width>

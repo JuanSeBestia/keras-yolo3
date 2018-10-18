@@ -3,7 +3,7 @@
 	<filename>image184.jpg</filename>
 	<path>/home/inkremental-3/gitKraken/keras-yolo3/examples/dipstick/images512-1024p/valid_images/image184.jpg</path>
 	<source>
-		<database>Unknown</database>
+		<database>VOC_dipstick</database>
 	</source>
 	<size>
 		<width>750</width>
