@@ -127,16 +127,23 @@ do
 cp "${var}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/Annotations/
 done
 
-# Copy image valid
-ArrayName=$(cat dataset/ImageSets/Main/train.txt)
-for var in "${ArrayName[@]}"
+
+# Prepare dataset
+mkdir -p dataset/train/Annotations -p dataset/train/JPEGImages -p dataset/valid/Annotations -p dataset/valid/JPEGImages
+# Copy train
+ArrayName=$(cat dipstick/VOC_dipstick/ImageSets/Main/train.txt)
+for var in $ArrayName
 do
-echo $var
-#cp "../valid_images/${var/xml/jpg}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/JPEGImages/
-#cp "${var}" /home/inkremental-3/gitKraken/dipstick/VOC_dipstick/Annotations/
+cp "dipstick/VOC_dipstick/JPEGImages/${var}.jpg" dataset/train/JPEGImages/
+cp "dipstick/VOC_dipstick/Annotations/${var}.xml" dataset/train/Annotations/
 done
-
-
+# Copy valid
+ArrayName=$(cat dipstick/VOC_dipstick/ImageSets/Main/valid.txt)
+for var in $ArrayName
+do
+cp "dipstick/VOC_dipstick/JPEGImages/${var}.jpg" dataset/valid/JPEGImages/
+cp "dipstick/VOC_dipstick/Annotations/${var}.xml" dataset/valid/Annotations/
+done
 ```
 
 It carries out detection on the image and write the image with detected bounding boxes to the same folder.
