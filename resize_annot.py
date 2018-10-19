@@ -9,7 +9,8 @@ import pickle
 
 
 def mod_image(edit_image, minsize, maxsize, autofill=False):
-
+    minx = 0
+    miny = 0
     # make square
     if (autofill):
         height, width, _ = edit_image.shape
@@ -25,21 +26,25 @@ def mod_image(edit_image, minsize, maxsize, autofill=False):
     # scale to min
     height, width, _ = edit_image.shape
     minpixels = height if width >= height else width
+    scale1 = 1
     if minpixels < minsize:
-        edit_image = cv2.resize(edit_image, (0, 0), fx=(
-            minsize/minpixels), fy=(minsize/minpixels))
+        scale1 = minsize/minpixels
+        edit_image = cv2.resize(edit_image, (0, 0),
+                                fx=(scale1), fy=(scale1))
 
     # scale to max
     height, width, _ = edit_image.shape
     maxpixels = width if width >= height else height
+    scale2 = 1
     if maxpixels > maxsize:
-        edit_image = cv2.resize(edit_image, (0, 0), fx=(
-            maxsize/maxpixels), fy=(maxsize/maxpixels))
+        scale2 = maxsize/maxpixels
+        edit_image = cv2.resize(edit_image, (0, 0),
+                                fx=(scale2), fy=(scale2))
 
-    return edit_image
+    return [edit_image, minx, miny, scale1*scale2]
 
 
-def mod_annot(tree, xscale=False, yscale=False, height=False, width=False):
+def mod_annot(tree, xscale=1, yscale=1, outsetx=0, outsety=0, height=False, width=False):
     for elem in tree.iter():
         if 'width' in elem.tag and width:
             elem.text = str(width)
@@ -49,13 +54,17 @@ def mod_annot(tree, xscale=False, yscale=False, height=False, width=False):
             for attr in list(elem):
                 if 'bndbox' in attr.tag:
                     for dim in list(attr):
-                        if 'xmin' in dim.tag and xscale:
+                        if 'xmin' in dim.tag:
+                            dim.text = str(int(outsetx + int(dim.text)))
                             dim.text = str(int(xscale * int(dim.text)))
-                        if 'xmax' in dim.tag and xscale:
+                        if 'xmax' in dim.tag:
+                            dim.text = str(int(outsetx + int(dim.text)))
                             dim.text = str(int(xscale * int(dim.text)))
-                        if 'ymin' in dim.tag and yscale:
+                        if 'ymin' in dim.tag:
+                            dim.text = str(int(outsety + int(dim.text)))
                             dim.text = str(int(yscale * int(dim.text)))
-                        if 'ymax' in dim.tag and yscale:
+                        if 'ymax' in dim.tag:
+                            dim.text = str(int(outsety + int(dim.text)))
                             dim.text = str(int(yscale * int(dim.text)))
     return tree
 
@@ -87,13 +96,13 @@ def _main_(args):
             image = cv2.imread(image_path)
             original_height, original_width, original__ = image.shape
 
-            edit_image = mod_image(image, minsize, maxsize, autofill)
+            edit_image, outsetx, outsety, scale = mod_image(image, minsize, maxsize, autofill)
 
             height, width, _ = edit_image.shape
             xscale = width/original_width
             yscale = height/original_height
 
-            edit_tree = mod_annot(tree, xscale, yscale, height, width)
+            edit_tree = mod_annot(tree, scale, scale, outsetx, outsety, height, width)
 
             if not os.path.exists(args.output+'JPEGImages/'):
                 os.makedirs(args.output+'JPEGImages/')
