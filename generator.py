@@ -23,7 +23,7 @@ class BatchGenerator(Sequence):
         self.batch_size         = batch_size
         self.labels             = labels
         self.downsample         = downsample
-        self.max_box_per_image  = 800
+        self.max_box_per_image  = max_box_per_image
         self.min_net_size       = (min_net_size//self.downsample)*self.downsample
         self.max_net_size       = (max_net_size//self.downsample)*self.downsample
         self.shuffle            = shuffle
