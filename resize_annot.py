@@ -7,6 +7,10 @@ import numpy as np
 import xml.etree.ElementTree as ET
 import pickle
 
+max_count = 0
+objects_counts = 0
+annots_counts = 0
+
 
 def mod_image(edit_image, minsize, maxsize, autofill=False):
     minx = 0
@@ -45,6 +49,9 @@ def mod_image(edit_image, minsize, maxsize, autofill=False):
 
 
 def mod_annot(tree, xscale=1, yscale=1, outsetx=0, outsety=0, height=False, width=False):
+    global max_count
+    global objects_counts
+    global annots_counts
     for elem in tree.iter():
         if 'width' in elem.tag and width:
             elem.text = str(width)
@@ -66,6 +73,13 @@ def mod_annot(tree, xscale=1, yscale=1, outsetx=0, outsety=0, height=False, widt
                         if 'ymax' in dim.tag:
                             dim.text = str(int(outsety + int(dim.text)))
                             dim.text = str(int(yscale * int(dim.text)))
+    count_objects = len(tree.findall(".//object"))
+    count = ET.SubElement(tree.getroot(), 'count')
+    count.text = str(count_objects)
+    if max_count < count_objects:
+        max_count = count_objects
+    objects_counts += count_objects
+    annots_counts += 1
     return tree
 
 
@@ -96,13 +110,15 @@ def _main_(args):
             image = cv2.imread(image_path)
             original_height, original_width, original__ = image.shape
 
-            edit_image, outsetx, outsety, scale = mod_image(image, minsize, maxsize, autofill)
+            edit_image, outsetx, outsety, scale = mod_image(
+                image, minsize, maxsize, autofill)
 
             height, width, _ = edit_image.shape
             xscale = width/original_width
             yscale = height/original_height
 
-            edit_tree = mod_annot(tree, scale, scale, outsetx, outsety, height, width)
+            edit_tree = mod_annot(tree, scale, scale,
+                                  outsetx, outsety, height, width)
 
             if not os.path.exists(args.output+'JPEGImages/'):
                 os.makedirs(args.output+'JPEGImages/')
@@ -119,13 +135,14 @@ def _main_(args):
             print(e)
             print('error in: ' + input_path + inp_file)
             continue
+    print("{} Annots edited with {} objects, max objects per file {}".format(annots_counts,objects_counts,max_count))
 
 
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser(description='resize images')
-    argparser.add_argument('-i', '--input', default='/home/inkremental-3/gitKraken/dipstick/VOC_dipstick/Annotations/',
+    argparser.add_argument('-i', '--input', default='/home/inkremental-3/gitKraken/dipstick/VOC_dipstick_512/Annotations/',
                            help='path to annotations, a directory of annotations')
-    argparser.add_argument('-j', '--jpgimages', default='/home/inkremental-3/gitKraken/dipstick/VOC_dipstick/JPEGImages/',
+    argparser.add_argument('-j', '--jpgimages', default='/home/inkremental-3/gitKraken/dipstick/VOC_dipstick_512/JPEGImages/',
                            help='a directory of images')
     argparser.add_argument(
         '-o', '--output', default='output/', help='path to output directory')
