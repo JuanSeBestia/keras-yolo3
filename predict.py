@@ -110,7 +110,6 @@ def _main_(args):
 
         # the main loop
         import csv
-        csvFile = open(args.fileoutput, 'w')
         for image_path in image_paths:
             image = cv2.imread(image_path)
             
@@ -125,9 +124,10 @@ def _main_(args):
             cv2.imwrite(output_path + image_path.split('/')[-1], np.uint8(image))         
 
             # Write results
+            csvFile = open(args.fileoutput, 'a')
             with csvFile:
                 writer = csv.writer(csvFile)
-                writer.writerows([image_path.split('/')[-1],str(len(boxes))])
+                writer.writerow([str(image_path.split('/')[-1]),str(len(boxes))])
 
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser(description='Predict with a trained yolo model')
