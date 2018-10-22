@@ -67,7 +67,7 @@ def create_callbacks(saved_weights_name, tensorboard_logs, model_to_save):
     
     early_stop = EarlyStopping(
         monitor     = 'loss', 
-        min_delta   = 0.01, 
+        min_delta   = 0.00001, 
         patience    = 5, 
         mode        = 'min', 
         verbose     = 1

@@ -1,0 +1,41 @@
+{
+    "model" : {
+        "min_input_size":       512,
+        "max_input_size":       512,
+        "anchors":              [10,15, 13,15, 14,20, 17,16, 18,24, 23,33, 25,22, 34,46, 53,49],
+        "labels":               ["dipstick"]
+    },
+
+    "train": {
+        "train_image_folder":   "dataset/train/JPEGImages/",
+        "train_annot_folder":   "dataset/train/Annotations/",
+        "cache_name":           "app/jobs/dipstick_train.pkl",
+
+        "train_times":          2,
+        "batch_size":           8,
+        "learning_rate":        1e-4,
+        "nb_epochs":            20,
+        "warmup_epochs":        3,
+        "ignore_thresh":        0.5,
+        "gpus":                 "0,1",
+
+        "grid_scales":          [1,1,1],
+        "obj_scale":            5,
+        "noobj_scale":          1,
+        "xywh_scale":           1,
+        "class_scale":          1,
+
+        "tensorboard_dir":      "app/jobs/logs",
+        "saved_weights_name":   "yolo3_dipstick_colab_512.h5",
+        "pretrained_weights":   "yolo3_dipstick_colab_512.h5",
+        "debug":                false
+    },
+
+    "valid": {
+        "valid_image_folder":   "dataset/valid/JPEGImages/",
+        "valid_annot_folder":   "dataset/valid/Annotations/",
+        "cache_name":           "app/jobs/cache",
+
+        "valid_times":          1
+    }
+}
