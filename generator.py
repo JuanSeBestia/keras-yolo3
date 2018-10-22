@@ -11,7 +11,7 @@ class BatchGenerator(Sequence):
         anchors,   
         labels,        
         downsample=32, # ratio between network input's size and network output's size, 32 for YOLOv3
-        max_box_per_image=30,
+        max_box_per_image=800,
         batch_size=1,
         min_net_size=320,
         max_net_size=608,    
@@ -23,15 +23,15 @@ class BatchGenerator(Sequence):
         self.batch_size         = batch_size
         self.labels             = labels
         self.downsample         = downsample
-        self.max_box_per_image  = max_box_per_image
+        self.max_box_per_image  = 800
         self.min_net_size       = (min_net_size//self.downsample)*self.downsample
         self.max_net_size       = (max_net_size//self.downsample)*self.downsample
         self.shuffle            = shuffle
         self.jitter             = jitter
         self.norm               = norm
         self.anchors            = [BoundBox(0, 0, anchors[2*i], anchors[2*i+1]) for i in range(len(anchors)//2)]
-        self.net_h              = 416  
-        self.net_w              = 416
+        self.net_h              = 512  
+        self.net_w              = 512
 
         if shuffle: np.random.shuffle(self.instances)
             
@@ -151,7 +151,7 @@ class BatchGenerator(Sequence):
         if idx%10 == 0:
             net_size = self.downsample*np.random.randint(self.min_net_size/self.downsample, \
                                                          self.max_net_size/self.downsample+1)
-            # print("resizing: ", net_size, net_size)
+            print("resizing: ", net_size, net_size)
             self.net_h, self.net_w = net_size, net_size
         return self.net_h, self.net_w
     
