@@ -26,8 +26,8 @@
         "class_scale":          1,
 
         "tensorboard_dir":      "app/jobs/logs",
-        "saved_weights_name":   "yolo3_dipstick_colab_512.h5",
-        "pretrained_weights":   "yolo3_dipstick_colab_512.h5",
+        "saved_weights_name":   "yolo3_dipstick_colab_512_1:10.h5",
+        "pretrained_weights":   "yolo3_dipstick_colab_512_1:10.h5",
         "debug":                false
     },
 
