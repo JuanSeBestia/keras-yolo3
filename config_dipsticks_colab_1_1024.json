@@ -20,13 +20,13 @@
         "gpus":                 "0,1",
 
         "grid_scales":          [1,1,1],
-        "obj_scale":            1,
-        "noobj_scale":          3,
+        "obj_scale":            15,
+        "noobj_scale":          5,
         "xywh_scale":           1,
         "class_scale":          1,
 
         "tensorboard_dir":      "app/jobs/logs",
-        "saved_weights_name":   "yolo3_dipstick_colab_1024.h5",
+        "saved_weights_name":   "yolo3_dipstick_colab_1024_15:5.h5",
         "pretrained_weights":   "yolo3_dipstick_colab_1024.h5",
         "debug":                false
     },
