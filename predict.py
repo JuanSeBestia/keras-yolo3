@@ -109,6 +109,8 @@ def _main_(args):
         image_paths = [inp_file for inp_file in image_paths if (inp_file[-4:] in ['.jpg', '.png', 'JPEG'])]
 
         # the main loop
+        import csv
+        csvFile = open(args.fileoutput, 'w')
         for image_path in image_paths:
             image = cv2.imread(image_path)
             
@@ -122,11 +124,16 @@ def _main_(args):
             # write the image with bounding boxes to file
             cv2.imwrite(output_path + image_path.split('/')[-1], np.uint8(image))         
 
+            # Write results
+            with csvFile:
+                writer = csv.writer(csvFile)
+                writer.writerows([image_path.split('/')[-1],str(len(boxes))])
+
 if __name__ == '__main__':
     argparser = argparse.ArgumentParser(description='Predict with a trained yolo model')
     argparser.add_argument('-c', '--conf', help='path to configuration file')
     argparser.add_argument('-i', '--input', help='path to an image, a directory of images, a video, or webcam')    
     argparser.add_argument('-o', '--output', default='output/', help='path to output directory')   
-    
+    argparser.add_argument('-f', '--fileoutput', default='fileoutput.csv', help='path to output print csv')
     args = argparser.parse_args()
     _main_(args)
