@@ -20,8 +20,8 @@
         "gpus":                 "0,1",
 
         "grid_scales":          [1,1,1],
-        "obj_scale":            10,
-        "noobj_scale":          1,
+        "obj_scale":            15,
+        "noobj_scale":          5,
         "xywh_scale":           1,
         "class_scale":          1,
 
