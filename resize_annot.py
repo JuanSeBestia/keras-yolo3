@@ -6,6 +6,7 @@ import cv2
 import numpy as np
 import xml.etree.ElementTree as ET
 import pickle
+import csv
 
 max_count = 0
 objects_counts = 0
@@ -80,7 +81,7 @@ def mod_annot(tree, xscale=1, yscale=1, outsetx=0, outsety=0, height=False, widt
         max_count = count_objects
     objects_counts += count_objects
     annots_counts += 1
-    return tree
+    return [tree, count_objects]
 
 
 def _main_(args):
@@ -117,7 +118,7 @@ def _main_(args):
             xscale = width/original_width
             yscale = height/original_height
 
-            edit_tree = mod_annot(tree, scale, scale,
+            edit_tree, count_objs = mod_annot(tree, scale, scale,
                                   outsetx, outsety, height, width)
 
             if not os.path.exists(args.output+'JPEGImages/'):
@@ -130,6 +131,10 @@ def _main_(args):
 
             edit_tree.write(annot_path_out, encoding='UTF-8')
             cv2.imwrite(image_path_out, edit_image)
+            csvFile = open("annots.csv", 'a')
+            with csvFile:
+                writer = csv.writer(csvFile)
+                writer.writerow([image_file,str(count_objs)])
 
         except Exception as e:
             print(e)

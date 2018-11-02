@@ -1,9 +1,9 @@
 <annotation>
 	<folder>valid_images</folder>
 	<filename>image194.jpg</filename>
-	<path>/home/inkremental-3/gitKraken/keras-yolo3/examples/dipstick/images512-1024p/valid_images/image194.jpg</path>
+	<path>/home/inkremental/Documents/valid_images/valid_images/image194.jpg</path>
 	<source>
-		<database>VOC_dipstick</database>
+		<database>Unknown</database>
 	</source>
 	<size>
 		<width>512</width>

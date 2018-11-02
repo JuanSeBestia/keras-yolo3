@@ -1,7 +1,7 @@
 <annotation verified="yes">
 	<folder>valid_task_images</folder>
 	<filename>valid_task_image102.jpg</filename>
-	<path>/home/inkremental-3/gitKraken/keras-yolo3/examples/dipstick/images512-1024p/valid_task_images/valid_task_image102.jpg</path>
+	<path>/home/inkremental/Documents/valid_task_images/valid_task_images/valid_task_image102.jpg</path>
 	<source>
 		<database>Unknown</database>
 	</source>
